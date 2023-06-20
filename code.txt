@@ -7,3 +7,7 @@ nyamekyeasford
 Testing1234
 
 confirmation code - 1234
+
+Week 2
+
+Run pip install -r requirements.txt in /backend/flask
