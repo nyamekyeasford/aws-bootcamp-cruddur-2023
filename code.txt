@@ -48,3 +48,7 @@ with app.app_context():
       REACT_APP_AWS_COGNITO_REGION=
       REACT_APP_AWS_USER_POOLS_ID=
       REACT_APP_CLIENT_ID=
+
+      vid 3
+
+      run a pip install -r requirements.txt in /backendlask
