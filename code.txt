@@ -62,3 +62,5 @@ export PROD_CONNECTION_URL="postgresql://root:DBPassW0rd123@cruddur-db-instance.
 gp env PROD_CONNECTION_URL="postgresql://root:DBPassW0rd123@cruddur-db-instance.ccvedozbc1wo.us-east-1.rds.amazonaws.com:5432/cruddur"
 
 chmod u+x bin/create,drop,schema-load in backendlask
+
+run pip install -r requirements.txt in backendflask
