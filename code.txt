@@ -65,8 +65,8 @@ chmod u+x bin/create,drop,schema-load in backendlask
 
 run pip install -r requirements.txt in backendflask
 
-export DB_SG_RULE_ID="sgr-054d1c0c89d242226"
-gp env DB_SG_RULE_ID="sgr-054d1c0c89d242226"
+export DB_SG_RULE_ID="sgr-0b84f768345b833ba"
+gp env DB_SG_RULE_ID="sgr-0b84f768345b833ba"
 
 export DB_SG_ID="sg-0371a88eb14ee8eba"
 gp env DB_SG_ID="sg-0371a88eb14ee8eba"
