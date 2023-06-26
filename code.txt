@@ -55,21 +55,13 @@ with app.app_context():
 
       week 4
 
-export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
-gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
 
-export PROD_CONNECTION_URL="postgresql://root:DBPassW0rd123@cruddur-db-instance.ccvedozbc1wo.us-east-1.rds.amazonaws.com:5432/cruddur"
-gp env PROD_CONNECTION_URL="postgresql://root:DBPassW0rd123@cruddur-db-instance.ccvedozbc1wo.us-east-1.rds.amazonaws.com:5432/cruddur"
 
 chmod u+x bin/create,drop,schema-load in backendlask
 
 run pip install -r requirements.txt in backendflask
 
-export DB_SG_RULE_ID="sgr-0b84f768345b833ba"
-gp env DB_SG_RULE_ID="sgr-0b84f768345b833ba"
 
-export DB_SG_ID="sg-0371a88eb14ee8eba"
-gp env DB_SG_ID="sg-0371a88eb14ee8eba"
 
 aws ec2 modify-security-group-rules \
     --group-id $DB_SG_ID \
