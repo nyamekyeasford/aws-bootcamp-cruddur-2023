@@ -20,11 +20,7 @@ def lambda_handler(event, context):
           handle, 
           cognito_user_id
           ) 
-        VALUES(
-        %(display_name)s,
-        %(email)s,
-        %(handle)s,
-        %(cognito_user_id)s)
+        VALUES(%s,%s,%s,%s)
       """
       print('SQL Statement ----')
       print(sql)
@@ -36,7 +32,7 @@ def lambda_handler(event, context):
         user_handle,
         user_cognito_id
       ]
-      cur.execute(sql,params)
+      cur.execute(sql,*params)
       conn.commit() 
 
     except (Exception, psycopg2.DatabaseError) as error:
