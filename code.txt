@@ -86,3 +86,10 @@ aws ec2 modify-security-group-rules \
     14. chmod patterns in ddb 
     15. ./bin/ddb/patterns/get-conversation
     16. ./bin/ddb/patterns/list-conversations
+
+    17. chmod u+x list-users in cognito folder
+    18. export AWS_COGNITO_USER_POOL_ID=""
+        gp env AWS_COGNITO_USER_POOL_ID=""
+    19. ./bin/cognito/list-users
+    20. 
+    
