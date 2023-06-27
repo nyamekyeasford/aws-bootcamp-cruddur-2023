@@ -66,3 +66,23 @@ run pip install -r requirements.txt in backendflask
 aws ec2 modify-security-group-rules \
     --group-id $DB_SG_ID \
     --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
+
+    Week 5
+    ensure dynamodb is running on docker compose 
+
+    1. load schema load ddb
+    2. chmod u+x list-tables in ddb
+    3. load list-tables ddb
+    4. load drop cruddur-message in ddb 
+    8. ./bin/db/drop
+    5. ./bin/db/create
+    6. ./bin/db/schemaload
+    7. ./bin/db/seed
+    9. ./bin/ddb/seed
+    10. ./bin/ddb/schemaload
+    11. ./bin/ddb/list-tables
+    12. ./bin/ddb/seed
+    13. ./bin/ddb/scan
+    14. chmod patterns in ddb 
+    15. ./bin/ddb/patterns/get-conversation
+    16. ./bin/ddb/patterns/list-conversations
