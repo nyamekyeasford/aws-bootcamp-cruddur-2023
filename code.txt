@@ -91,5 +91,13 @@ aws ec2 modify-security-group-rules \
     18. export AWS_COGNITO_USER_POOL_ID=""
         gp env AWS_COGNITO_USER_POOL_ID=""
     19. ./bin/cognito/list-users
-    20. 
-    
+    20. ./bin/db/setup
+    21. ./bin/cognito/list-users
+    23. ./bin/db/update_cognito_user_id
+    24. ./bin/ddb/schemaload
+    25. ./bin/ddb/seed
+    26. ./bin/ddb/patterns/list-conversations
+    27. ./bin/db/connect
+        INSERT INTO public.users (display_name, email, handle, cognito_user_id)
+VALUES ('Londo Mollari', 'lmollari@centari.com','londo','MOCK');
+    28. 
