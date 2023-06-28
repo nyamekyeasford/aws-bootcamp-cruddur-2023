@@ -199,13 +199,15 @@ aws ec2 authorize-security-group-ingress \
   aws logs create-log-group --log-group-name cruddur
   aws logs put-retention-policy --log-group-name cruddur --retention-in-days 1
 
-aws ecs execute command \
---region $AWS_DEFAULT_REGION
+aws ecs execute command --region $AWS_DEFAULT_REGION --cluster cruddur --task 971650e97a13469d80348545264ea3a6 --container backend-flask --command "/bin/bash" --interactive
+
+aws ecs execute-command  \
+--region $AWS_DEFAULT_REGION \
 --cluster cruddur \
---task arn:aws:ecs:us-east-1:837652279078:task/cruddur/971650e97a13469d80348545264ea3a6 \
+--task 81df516b838e46fcae6be8f1f8349916 \
 --container backend-flask \
 --command "/bin/bash" \
---interactive 
+--interactive
 
 Install Sessions manager
 
