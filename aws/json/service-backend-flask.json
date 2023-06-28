@@ -8,7 +8,7 @@
       {
           "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:837652279078:targetgroup/cruddur-backend-flask-tg/d47c028fdbd8d665",
           "containerName":"backend-flask",
-          "containerPort":"4567"         
+          "containerPort": 4567         
       }
     ],
     "networkConfiguration": {
