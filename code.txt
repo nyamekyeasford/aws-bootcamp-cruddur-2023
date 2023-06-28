@@ -153,7 +153,7 @@ VALUES ('Londo Mollari', 'lmollari@centari.com','londo','MOCK');
    
    aws iam create-role \
     --role-name CruddurServiceExecutionRole \
-    --assume-role-policy-document file://aws/policies/service-execution-policy.json
+    --assume-role-policy-document "file://aws/policies/service-execution-policy.json"
 
     Delete cruddur CruddurServiceExecutionRole
 
@@ -166,13 +166,30 @@ aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/CONNE
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" --value $ROLLBAR_ACCESS_TOKEN
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
 
-aws iam create-role \    
---role-name CruddurServiceExecutionPolicy  \   
---assume-role-policy-document file://aws/policies/service-assume-role-execution-policy.json
+aws iam create-role --role-name CruddurServiceExecutionPolicy --assume-role-policy-document "file://aws/policies/service-assume-role-execution-policy.json"
 
 aws iam put-role-policy \
   --policy-name CruddurServiceExecutionPolicy \
   --role-name CruddurServiceExecutionRole \
   --policy-document file://aws/policies/service-execution-policy.json
 
-1:20
+  register backend flask task definition
+
+aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
+
+create a security group for cruddur 
+
+export CRUD_SERVICE_SG=$(aws ec2 create-security-group \
+  --group-name "crud-srv-sg" \
+  --description "Security group for Cruddur services on ECS" \
+  --vpc-id $DEFAULT_VPC_ID \
+  --query "GroupId" --output text)
+  echo $CRUD_SERVICE_SG
+
+Open Port 80 on the security group 
+
+aws ec2 authorize-security-group-ingress \
+  --group-id $CRUD_SERVICE_SG \
+  --protocol tcp \
+  --port 80 \
+  --cidr 0.0.0.0/0
