@@ -129,6 +129,8 @@ VALUES ('Londo Mollari', 'lmollari@centari.com','londo','MOCK');
 
     docker push $ECR_PYTHON_URL:3.10-slim-buster
 
+    docker image rm 837652279078.dkr.ecr.us-east-1.amazonaws.com/cruddur-python:3.10-slim-buster
+
     always login in the termainal youre using to access docker on aws before running docker
 
     login into ecr 
