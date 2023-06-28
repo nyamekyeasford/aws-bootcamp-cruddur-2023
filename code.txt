@@ -165,3 +165,14 @@ aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_S
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/CONNECTION_URL" --value $PROD_CONNECTION_URL
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" --value $ROLLBAR_ACCESS_TOKEN
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
+
+aws iam create-role \    
+--role-name CruddurServiceExecutionPolicy  \   
+--assume-role-policy-document file://aws/policies/service-assume-role-execution-policy.json
+
+aws iam put-role-policy \
+  --policy-name CruddurServiceExecutionPolicy \
+  --role-name CruddurServiceExecutionRole \
+  --policy-document file://aws/policies/service-execution-policy.json
+
+1:20
