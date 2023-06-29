@@ -217,3 +217,26 @@ sudo dpkg -i session-manager-plugin.deb
 session-manager-plugin
 
 arn:aws:ecs:us-east-1:837652279078:task/cruddur/971650e97a13469d80348545264ea3a6
+
+
+aws ecr create-repository \
+  --repository-name frontend-react-js \
+  --image-tag-mutability MUTABLE
+
+docker build \
+--build-arg REACT_APP_BACKEND_URL="http://cruddur-alb-744674837.us-east-1.elb.amazonaws.com:4567" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_q0gJLXnNT" \
+--build-arg REACT_APP_CLIENT_ID="7fnhdkdm6npbogv4r5la2gp373" \
+-t frontend-react-js \
+-f Dockerfile.prod \
+.
+
+docker tag frontend-react-js:latest $ECR_FRONTEND_REACT_URL:latest
+
+docker push $ECR_FRONTEND_REACT_URL:latest
+
+aws ecs register-task-definition --cli-input-json file://aws/task-definitions/frontend-react-js.json
+
+aws ecs create-service --cli-input-json file://aws/json/service-frontend-react-js.json
