@@ -249,3 +249,7 @@ aws ecs create-service --cli-input-json file://aws/json/service-frontend-react-j
             "containerPort": 3000         
         }
       ],
+
+      login into ecr and build docker images
+
+      docker build -f Dockerfile.prod -t backend-flask-prod .
