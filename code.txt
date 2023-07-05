@@ -258,6 +258,8 @@ aws ecs create-service --cli-input-json file://aws/json/service-frontend-react-j
 
       Week 8
 
+npm i dotenv
+
 install aws cdk
 # Welcome to your CDK TypeScript project
 
@@ -278,3 +280,5 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 cdk synth
 
 to deploy ==  cdk bootstrap "aws://awsid//us-east-1"
+
+cdk deploy
